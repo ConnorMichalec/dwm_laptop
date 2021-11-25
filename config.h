@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 15;        /* gaps between windows */
 static const unsigned int snap      = 0;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -18,10 +18,12 @@ static const char col_cyan[]        = "#005577";
 
 static const char col_background[] = "#272833";
 static const char col_background_sel[] = "#5f819d";
+static const char col_border_sel[] = "#cc6666";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_background, col_background },
-	[SchemeSel]  = { col_background, col_background_sel,  col_background_sel },
+	[SchemeSel]  = { col_background, col_background_sel,  col_border_sel},
 };
 
 typedef struct {

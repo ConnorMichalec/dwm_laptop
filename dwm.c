@@ -769,8 +769,8 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 		isCode = 0;
 	text = p;
 
-	//w += 2; /* 1px padding on both sides */ 
-	w += horizpadbar; /* make status2d pay attention to statuspadding */
+	w += 2; /* 1px padding on both sides */ //default behavior, status2d will just extend to available space
+	//w += horizpadbar; /* make status2d pay attention to statuspadding */
 	ret = x = m->ww - w;
 
 	drw_setscheme(drw, scheme[LENGTH(colors)]);
@@ -787,8 +787,8 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 
 			text[i] = '\0';
 			w = TEXTW(text) - lrpad;
-			//drw_text(drw, x, 0, w, bh, 0, text, 0);
-			drw_text(drw, x, vertpadbar / 2, w, bh - vertpadbar, 0, text, 0); //Make status2d pay attention to statuspadding - code stolen from: https://github.com/siduck/chadwm/blob/main/chadwm/dwm.c the same effect could also be done by defining rects, but it would be more involved for statusbar definition.
+			drw_text(drw, x, 0, w, bh, 0, text, 0); //default behavior, status2d will just extend to available space
+			//drw_text(drw, x, vertpadbar / 2, w, bh - vertpadbar, 0, text, 0); //Make status2d pay attention to statuspadding - code stolen from: https://github.com/siduck/chadwm/blob/main/chadwm/dwm.c the same effect could also be done by defining rects, but it would be more involved for statusbar definition.
 
 			x += w;
 

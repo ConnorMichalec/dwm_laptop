@@ -12,13 +12,16 @@ static const char *fonts[]          = { "Hack Nerd Font:size=11" };
 static const char dmenufont[]       = "Hack Nerd Font:size=11";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
 
+static const char col_foreground[] = "#c5c8c6";
 static const char col_background[] = "#272833";
-static const char col_background_sel[] = "#5f819d";
-static const char col_border_sel[] = "#de935f";
+static const char col_blue_light[] = "#5f819d";
+static const char col_yellow[] = "#de935f";
+static const char col_blue[] = "#466279";
+static const char col_black_light[] = "#373b41";
+static const char col_cyan[] = "#62878d";
+
 
 //code stolen from: https://gist.github.com/palopezv/efd34059af6126ad970940bcc6a90f2e
 #include <X11/XF86keysym.h>
@@ -28,8 +31,10 @@ static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "togg
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_background, col_background },
-	[SchemeSel]  = { col_background, col_background_sel,  col_border_sel},
+	[SchemeNorm] = { col_foreground, col_background, col_background },
+	[SchemeSel]  = { col_foreground, col_blue_light,  col_yellow},
+	[SchemeTagNorm] = { col_foreground, col_blue, col_background },
+	[SchemeTagSel] = { col_foreground, col_blue_light, col_yellow}
 };
 
 typedef struct {
@@ -88,7 +93,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_background, "-nf", col_gray3, "-sb", col_background_sel, "-sf", col_background, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_background, "-nf", col_foreground, "-sb", col_blue_light, "-sf", col_background, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 
 #include "movestack.c"

@@ -34,7 +34,7 @@ static const char *colors[][3]      = {
 	[SchemeNorm] = { col_foreground, col_background, col_background },
 	[SchemeSel]  = { col_blue_light, col_background,  col_yellow},
 	[SchemeTagNorm] = { col_foreground, col_background, col_background },
-	[SchemeTagSel] = { col_foreground, col_background, col_yellow}
+	[SchemeTagSel] = { col_foreground, col_black_light, col_yellow}
 };
 
 typedef struct {

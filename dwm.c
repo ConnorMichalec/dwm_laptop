@@ -62,7 +62,7 @@
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
-enum { SchemeNorm, SchemeSel, SchemeTagNorm, SchemeTagSel }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeTagNorm, SchemeTagSel, SchemeMonSelectedBar }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
@@ -869,10 +869,11 @@ drawbar(Monitor *m)
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
+		//set scheme for tag selector tag numbers to the custom tag scheme.
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeTagSel : SchemeTagNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
 
-		//make the bar underneath it use SchemeSel/SchemeNorm instead of SchemeTagSel so they can be different colors:
+		//the rest of the tag selector will be the normal scheme
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		if (ulineall || m->tagset[m->seltags] & 1 << i) /* if there are conflicts, just move these lines directly underneath both 'drw_setscheme' and 'drw_text' :) */
 			drw_rect(drw, x + ulinepad, bh - ulinestroke - ulinevoffset, w - (ulinepad * 2), ulinestroke, 1, 0);
@@ -890,6 +891,14 @@ drawbar(Monitor *m)
 			drw_setscheme(drw, scheme[SchemeNorm]);
 			drw_rect(drw, x, 0, w, bh, 1, 1);
 	}
+
+
+	//if this monitor is selected, draw the indicator character.
+	if(m == selmon) {
+		drw_setscheme(drw, scheme[SchemeMonSelectedBar]);
+		drw_text(drw, x+monSelectedIndicatorOffsetX, monSelectedIndicatorOffsetY, w, bh, 0, monSelectedIndicatorChar, 0);
+	}
+
 	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
 }
 

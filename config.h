@@ -33,12 +33,17 @@ static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%"
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
 
+static const char *monSelectedIndicatorChar = "●";
+static const int monSelectedIndicatorOffsetY = 0;
+static const int monSelectedIndicatorOffsetX = 4;
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_foreground, col_background, col_background },
 	[SchemeSel]  = { col_blue_light, col_background,  col_yellow},
 	[SchemeTagNorm] = { col_foreground, col_background, col_background },
-	[SchemeTagSel] = { col_foreground, col_black_light, col_yellow}
+	[SchemeTagSel] = { col_foreground, col_black_light, col_yellow},
+	[SchemeMonSelectedBar] = { col_blue_light, col_background}
 };
 
 typedef struct {

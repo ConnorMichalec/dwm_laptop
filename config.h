@@ -112,6 +112,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_background, "-nf", col_foreground, "-sb", col_blue_light, "-sf", col_background, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 static const char *roficmd[] = {"rofi", "-show", "drun", NULL};
+static const char *flameshotcmd[] = {"flameshot", "gui", NULL};
 
 #include "movestack.c"
 static Key keys[] = {
@@ -151,6 +152,7 @@ static Key keys[] = {
 	{ MODKEY,            			XK_y,  	   togglescratch,  {.ui = 0 } },
 	{ MODKEY,            			XK_u,	   togglescratch,  {.ui = 1 } },
 	{ MODKEY,						XK_r,	   spawn,			{.v = roficmd } },		//spawn rofi
+	{ 0,                            XK_Print,  spawn,          {.v = flameshotcmd } }, //flameshot
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

@@ -53,7 +53,7 @@ typedef struct {
 
 //spfm and spterm are window rules defined below to be floating.(2 different otherwise they will clash)
 const char *scratch_terminal[] = {"urxvt", "-name", "spterm", "-geometry", "135x35", NULL };
-const char *scratch_gotop[] = {"urxvt", "-name", "spfm", "-geometry", "150x40", "-e", "btop", NULL };
+const char *scratch_gotop[] = {"urxvt", "-name", "spfm", "-geometry", "150x40", "-e", "gotop", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"scratch_terminal",      scratch_terminal},
@@ -151,8 +151,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|Mod1Mask|,  			XK_comma,  tagswapmon,     {.i = +1 } },
-	{ MODKEY|Mod1Mask|,			    XK_period, tagswapmon,     {.i = -1 } },
+	{ MODKEY|Mod1Mask,  			XK_comma,  tagswapmon,     {.i = +1 } },
+	{ MODKEY|Mod1Mask,			    XK_period, tagswapmon,     {.i = -1 } },
 	{ MODKEY,            			XK_y,  	   togglescratch,  {.ui = 0 } },
 	{ MODKEY,            			XK_u,	   togglescratch,  {.ui = 1 } },
 	{ MODKEY,						XK_r,	   spawn,			{.v = roficmd } },		//spawn rofi

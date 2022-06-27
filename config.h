@@ -27,11 +27,16 @@ static const char col_black_light[] = "#373b41";
 static const char col_cyan[] = "#62878d";
 
 
-//code stolen from: https://gist.github.com/palopezv/efd34059af6126ad970940bcc6a90f2e
+//volume controls, code stolen from: https://gist.github.com/palopezv/efd34059af6126ad970940bcc6a90f2e
 #include <X11/XF86keysym.h>
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+
+//Brightness controls commands
+static const *brightness_up[] = {"light","-A","10"};
+static const *brightness_down[] = {"light","-U","10"};
+
 
 static const char *monSelectedIndicatorChar = "●";
 static const int monSelectedIndicatorOffsetY = 0;
@@ -122,6 +127,8 @@ static Key keys[] = {
 	{ 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{ 0,					   XF86XK_MonBrightnessUp, spawn, {.v = brightness_up}},
+	{ 0,					   XF86XK_MonBrightnessDown, spawn, {.v = brightness_down }},
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },

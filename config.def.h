@@ -58,7 +58,7 @@ typedef struct {
 
 //spfm and spterm are window rules defined below to be floating.(2 different otherwise they will clash)
 const char *scratch_terminal[] = {"urxvt", "-name", "spterm", "-geometry", "135x35", NULL };
-const char *scratch_gotop[] = {"urxvt", "-name", "spfm", "-geometry", "150x40", "-e", "gotop", NULL };
+const char *scratch_gotop[] = {"urxvt", "-name", "spfm", "-geometry", "155x50", "-e", "btop", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"scratch_terminal",      scratch_terminal},

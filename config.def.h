@@ -29,9 +29,9 @@ static const char col_cyan[] = "#62878d";
 
 //volume controls, code stolen from: https://gist.github.com/palopezv/efd34059af6126ad970940bcc6a90f2e
 #include <X11/XF86keysym.h>
-static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
-static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
-static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+static const char *upvol[]   = { "amixer", "sset", "Master", "5%+",     		NULL };
+static const char *downvol[] = { "amixer", "sset", "Master", "5%-",     		NULL };
+static const char *mutevol[] = { "amixer", "sset", "Master", "1+", "toggle",	NULL };
 
 //Brightness controls commands
 static const *brightness_up[] = {"light","-A","10"};
